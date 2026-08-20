@@ -1,0 +1,131 @@
+import { useEffect, useState } from 'react'
+import { Download, Menu, X } from 'lucide-react'
+import { Container } from '@shared/ui/Container'
+import { SocialIcon } from '@shared/ui/SocialIcon'
+import { ThemeToggle } from '@features/theme-toggle/ThemeToggle'
+import { NAV_SECTIONS } from '@shared/config/constants'
+import { useActiveSection } from '@shared/lib/hooks/useActiveSection'
+import { socialLinks } from '@entities/social-links/model/data'
+import { profile } from '@entities/resume/model/data'
+
+export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const activeId = useActiveSection(NAV_SECTIONS.map((section) => section.id))
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
+  return (
+    <header
+      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled
+          ? 'border-violet-500/15 bg-[var(--bg)]/80 backdrop-blur-lg'
+          : 'border-transparent bg-transparent'
+      }`}
+    >
+      <Container className="flex h-16 items-center justify-between sm:h-20">
+        <a
+          href="#hero"
+          className="group flex items-center gap-2.5 font-display text-lg font-bold text-[var(--fg)]"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-400 to-sky-400 text-sm font-bold text-white shadow-[0_8px_20px_-6px_rgba(124,58,237,0.65)] transition-transform duration-300 group-hover:scale-105">
+            АБ
+          </span>
+          <span className="hidden sm:inline">{profile.fullName}</span>
+        </a>
+
+        <nav className="hidden items-center gap-1 rounded-full border border-violet-500/10 bg-white/40 px-1.5 py-1.5 backdrop-blur-sm lg:flex dark:bg-white/[0.03]">
+          {NAV_SECTIONS.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                activeId === section.id
+                  ? 'bg-violet-600 text-white shadow-sm'
+                  : 'text-[var(--fg-muted)] hover:text-violet-600 dark:hover:text-violet-300'
+              }`}
+            >
+              {section.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={profile.cvHref}
+            download
+            className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_24px_-10px_rgba(124,58,237,0.8)] transition-transform duration-300 hover:scale-[1.03] sm:inline-flex"
+          >
+            <Download size={16} />
+            Резюме
+          </a>
+
+          <div className="hidden items-center gap-1.5 md:flex">
+            {socialLinks.map((link) => (
+              <SocialIcon key={link.id} link={link} size={16} />
+            ))}
+          </div>
+
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-violet-500/20 text-[var(--fg)] lg:hidden"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </Container>
+
+      {menuOpen && (
+        <div className="border-t border-violet-500/10 bg-[var(--bg)]/95 backdrop-blur-lg lg:hidden">
+          <Container className="flex flex-col gap-1 py-4">
+            {NAV_SECTIONS.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                onClick={() => setMenuOpen(false)}
+                className={`rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                  activeId === section.id
+                    ? 'bg-violet-600 text-white'
+                    : 'text-[var(--fg-muted)] hover:bg-violet-500/10'
+                }`}
+              >
+                {section.label}
+              </a>
+            ))}
+            <div className="mt-3 flex items-center justify-between px-4">
+              <div className="flex items-center gap-2">
+                {socialLinks.map((link) => (
+                  <SocialIcon key={link.id} link={link} size={16} />
+                ))}
+              </div>
+              <a
+                href={profile.cvHref}
+                download
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-white"
+              >
+                <Download size={16} />
+                Резюме
+              </a>
+            </div>
+          </Container>
+        </div>
+      )}
+    </header>
+  )
+}
