@@ -17,7 +17,6 @@ export const profile = {
     'Делаю интерфейсы на Vue, Nuxt и React, а бэкенды — на NestJS и PHP. 6+ лет в коммерческой разработке: от поддержки крупных legacy-систем до архитектуры с нуля.',
   taglineSecondary:
     'Активно использую ИИ-инструменты в разработке — GitHub Copilot, Cursor, ChatGPT, Claude — чтобы писать код быстрее и чище.',
-  cvHref: '/resume.pdf',
 }
 
 export const stackItems: StackItem[] = [

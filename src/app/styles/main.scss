@@ -26,6 +26,12 @@ body {
   border-radius: 4px;
 }
 
+button:not(:disabled),
+a,
+[role='button'] {
+  cursor: pointer;
+}
+
 /* ---------- Reveal-on-scroll ---------- */
 .reveal {
   opacity: 0;
@@ -108,6 +114,7 @@ body {
 .surface-card {
   background-color: var(--surface);
   border: 1px solid var(--surface-border);
+  cursor: pointer;
   transition:
     transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.35s ease,
@@ -135,29 +142,57 @@ body {
   scroll-snap-align: start;
 }
 
-/* ---------- Cursor reveal easter egg ---------- */
-.cursor-reveal {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: help;
-  isolation: isolate;
-}
-
-.cursor-reveal__base {
-  color: var(--fg-muted);
-  transition: opacity 0.3s ease;
-}
-
-.cursor-reveal--active .cursor-reveal__base {
-  opacity: 0.16;
-}
-
-.cursor-reveal__hidden {
+/* ---------- Footer cursor blob (easter egg) ---------- */
+.footer-blob {
   position: absolute;
-  inset: 0;
-  display: block;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(167, 139, 250, 0.75),
+    rgba(96, 165, 250, 0.48) 42%,
+    rgba(244, 114, 182, 0.32) 65%,
+    transparent 76%
+  );
+  filter: blur(26px);
+  opacity: 0;
+  transform: translate3d(-9999px, -9999px, 0) translate(-50%, -50%);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-blob--visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-blob {
+    display: none;
+  }
+}
+
+/* ---------- Secret text reveal ---------- */
+.secret-text {
+  position: relative;
+  display: inline-grid;
+}
+
+.secret-text__hint,
+.secret-text__hidden {
+  grid-area: 1 / 1;
+}
+
+.secret-text__hint {
+  color: var(--accent-soft);
+  opacity: 0.5;
+  font-size: 0.95rem;
+}
+
+.secret-text__hidden {
   white-space: nowrap;
   background-image: linear-gradient(90deg, #a78bfa, #60a5fa, #f472b6, #a78bfa);
   background-size: 250% auto;
@@ -165,13 +200,9 @@ body {
   -webkit-background-clip: text;
   color: transparent;
   font-weight: 600;
-  clip-path: circle(0px at var(--reveal-x, 50%) var(--reveal-y, 50%));
-  transition: clip-path 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.cursor-reveal__hidden--active {
-  clip-path: circle(160px at var(--reveal-x, 50%) var(--reveal-y, 50%));
+  font-size: 0.875rem;
+  clip-path: circle(100px at var(--reveal-x, -9999px) var(--reveal-y, -9999px));
+  transition: clip-path 0.15s ease-out;
   animation: shine 4s linear infinite;
 }
 
