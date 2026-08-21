@@ -3,14 +3,17 @@ import { Menu, X } from 'lucide-react'
 import { Container } from '@shared/ui/Container'
 import { SocialIcon } from '@shared/ui/SocialIcon'
 import { ThemeToggle } from '@features/theme-toggle/ThemeToggle'
-import { NAV_SECTIONS } from '@shared/config/constants'
+import { LocaleSwitch } from '@features/locale-switch/LocaleSwitch'
+import { NAV_SECTION_IDS } from '@shared/config/constants'
 import { useActiveSection } from '@shared/lib/hooks/useActiveSection'
+import { useLocale } from '@shared/i18n/useLocale'
 import { socialLinks } from '@entities/social-links/model/data'
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const activeId = useActiveSection(NAV_SECTIONS.map((section) => section.id))
+  const { t } = useLocale()
+  const activeId = useActiveSection([...NAV_SECTION_IDS])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -26,6 +29,8 @@ export function Header() {
     }
   }, [menuOpen])
 
+  const navItems = NAV_SECTION_IDS.map((id) => ({ id, label: t.nav[id] }))
+
   return (
     <header
       className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
@@ -37,7 +42,7 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between sm:h-20">
         <a
           href="#hero"
-          aria-label="Наверх"
+          aria-label={t.a11y.backToTop}
           className="group flex shrink-0 cursor-pointer items-center"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-400 to-sky-400 text-sm font-bold text-white shadow-[0_8px_20px_-6px_rgba(124,58,237,0.65)] transition-transform duration-300 group-hover:scale-105">
@@ -46,7 +51,7 @@ export function Header() {
         </a>
 
         <nav className="hidden items-center gap-1 rounded-full border border-violet-500/10 bg-white/40 px-1.5 py-1.5 backdrop-blur-sm lg:flex dark:bg-white/[0.03]">
-          {NAV_SECTIONS.map((section) => (
+          {navItems.map((section) => (
             <a
               key={section.id}
               href={`#${section.id}`}
@@ -68,12 +73,13 @@ export function Header() {
             ))}
           </div>
 
+          <LocaleSwitch />
           <ThemeToggle />
 
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-label={menuOpen ? t.a11y.closeMenu : t.a11y.openMenu}
             className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-violet-500/20 text-[var(--fg)] lg:hidden"
           >
             {menuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -84,7 +90,7 @@ export function Header() {
       {menuOpen && (
         <div className="border-t border-violet-500/10 bg-[var(--bg)]/95 backdrop-blur-lg lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
-            {NAV_SECTIONS.map((section) => (
+            {navItems.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}

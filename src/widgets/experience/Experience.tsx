@@ -2,16 +2,18 @@ import { Briefcase, Calendar } from 'lucide-react'
 import { Container } from '@shared/ui/Container'
 import { SectionTitle } from '@shared/ui/SectionTitle'
 import { RevealOnScroll } from '@shared/ui/RevealOnScroll'
-import { experience } from '@entities/resume/model/data'
+import { useLocale } from '@shared/i18n/useLocale'
 
 export function Experience() {
+  const { t } = useLocale()
+
   return (
     <section id="experience" className="scroll-mt-24 py-14 sm:py-20">
       <Container>
         <SectionTitle
-          eyebrow="Опыт работы"
-          title="6+ лет в коммерческой разработке"
-          description="От поддержки крупных проектов с историей до архитектуры и запуска нового функционала с нуля."
+          eyebrow={t.experience.eyebrow}
+          title={t.experience.title}
+          description={t.experience.description}
         />
 
         <div className="relative flex flex-col gap-8">
@@ -20,7 +22,7 @@ export function Experience() {
             aria-hidden="true"
           />
 
-          {experience.map((job, index) => (
+          {t.experience.items.map((job, index) => (
             <RevealOnScroll key={job.id} delay={index * 120}>
               <article className="surface-card relative rounded-2xl p-6 sm:pl-16">
                 <span

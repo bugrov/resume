@@ -1,10 +1,11 @@
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { stackItems } from '@entities/resume/model/data'
+import { useLocale } from '@shared/i18n/useLocale'
 import { getIcon } from '@shared/lib/iconMap'
 
 export function StackCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const { t } = useLocale()
 
   const scrollByCards = (direction: 1 | -1) => {
     const node = trackRef.current
@@ -20,7 +21,7 @@ export function StackCarousel() {
         ref={trackRef}
         className="carousel-track flex gap-4 overflow-x-auto scroll-pl-1 pb-4"
       >
-        {stackItems.map((item) => {
+        {t.stackSection.items.map((item) => {
           const Icon = getIcon(item.icon)
           return (
             <div
@@ -41,7 +42,7 @@ export function StackCarousel() {
         <button
           type="button"
           onClick={() => scrollByCards(-1)}
-          aria-label="Прокрутить назад"
+          aria-label={t.a11y.scrollBack}
           className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-violet-500/20 text-[var(--fg-muted)] transition-colors hover:border-violet-500/60 hover:text-violet-600 dark:hover:text-violet-300"
         >
           <ChevronLeft size={18} />
@@ -49,7 +50,7 @@ export function StackCarousel() {
         <button
           type="button"
           onClick={() => scrollByCards(1)}
-          aria-label="Прокрутить вперёд"
+          aria-label={t.a11y.scrollForward}
           className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-violet-500/20 text-[var(--fg-muted)] transition-colors hover:border-violet-500/60 hover:text-violet-600 dark:hover:text-violet-300"
         >
           <ChevronRight size={18} />

@@ -1,12 +1,15 @@
 import { ArrowUpRight, MapPin, Send, Sparkles } from 'lucide-react'
 import { Container } from '@shared/ui/Container'
 import { RevealOnScroll } from '@shared/ui/RevealOnScroll'
-import { profile } from '@entities/resume/model/data'
+import { useLocale } from '@shared/i18n/useLocale'
 import { socialLinks } from '@entities/social-links/model/data'
 
 const telegramLink = socialLinks.find((link) => link.id === 'telegram')!
 
 export function Hero() {
+  const { t } = useLocale()
+  const hero = t.hero
+
   return (
     <section id="hero" className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28">
       <div
@@ -29,7 +32,7 @@ export function Hero() {
           <div className="avatar-ring h-40 w-40 overflow-hidden rounded-full sm:h-48 sm:w-48 md:h-56 md:w-56">
             <img
               src="/avatar.jpg"
-              alt="Александр Бугров"
+              alt={hero.fullName}
               className="h-full w-full rounded-full object-cover"
               width={224}
               height={224}
@@ -41,31 +44,31 @@ export function Hero() {
           <RevealOnScroll delay={80}>
             <span className="inline-flex items-center gap-2 rounded-full border border-violet-500/25 bg-violet-500/10 px-4 py-1.5 text-sm font-medium text-violet-700 dark:text-violet-300">
               <Sparkles size={14} />
-              Привет, я
+              {hero.badge}
             </span>
           </RevealOnScroll>
 
           <RevealOnScroll delay={140}>
             <h1 className="mt-4 font-display text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-              <span className="text-shine">{profile.fullName}</span>
+              <span className="text-shine">{hero.fullName}</span>
             </h1>
           </RevealOnScroll>
 
           <RevealOnScroll delay={200}>
             <p className="mt-3 text-lg font-semibold text-[var(--fg)] sm:text-xl">
-              {profile.role} · <span className="text-[var(--fg-muted)]">{profile.roleStack}</span>
+              {hero.role} · <span className="text-[var(--fg-muted)]">{hero.roleStack}</span>
             </p>
           </RevealOnScroll>
 
           <RevealOnScroll delay={260}>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg">
-              {profile.tagline}
+              {hero.tagline}
             </p>
           </RevealOnScroll>
 
           <RevealOnScroll delay={320}>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--fg-muted)] sm:text-base">
-              {profile.taglineSecondary}
+              {hero.taglineSecondary}
             </p>
           </RevealOnScroll>
 
@@ -78,13 +81,13 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_32px_-14px_rgba(124,58,237,0.85)] transition-transform duration-300 hover:scale-[1.03]"
               >
                 <Send size={16} />
-                Написать в Telegram
+                {hero.ctaTelegram}
               </a>
               <a
                 href="#experience"
                 className="inline-flex items-center gap-2 rounded-full border border-violet-500/25 px-6 py-3 text-sm font-semibold text-[var(--fg)] transition-colors duration-300 hover:border-violet-500/60 hover:text-violet-600 dark:hover:text-violet-300"
               >
-                Смотреть опыт
+                {hero.ctaExperience}
                 <ArrowUpRight size={16} />
               </a>
             </div>
@@ -94,11 +97,11 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--fg-muted)] md:justify-start">
               <span className="inline-flex items-center gap-1.5">
                 <MapPin size={15} className="text-violet-500" />
-                {profile.location}
+                {hero.location}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                Открыт для новых предложений
+                {hero.openToWork}
               </span>
             </div>
           </RevealOnScroll>

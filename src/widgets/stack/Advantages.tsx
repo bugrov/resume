@@ -1,11 +1,13 @@
-import { advantages } from '@entities/resume/model/data'
+import { useLocale } from '@shared/i18n/useLocale'
 import { getIcon } from '@shared/lib/iconMap'
 import { RevealOnScroll } from '@shared/ui/RevealOnScroll'
 
 export function Advantages() {
+  const { t } = useLocale()
+
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-      {advantages.map((item, index) => {
+      {t.advantages.map((item, index) => {
         const Icon = getIcon(item.icon)
         return (
           <RevealOnScroll key={item.id} delay={index * 90}>

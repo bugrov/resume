@@ -3,9 +3,10 @@ import { Container } from '@shared/ui/Container'
 import { SectionTitle } from '@shared/ui/SectionTitle'
 import { RevealOnScroll } from '@shared/ui/RevealOnScroll'
 import { useInView } from '@shared/lib/hooks/useInView'
-import { languages } from '@entities/resume/model/data'
+import { useLocale } from '@shared/i18n/useLocale'
+import type { LanguageItemT } from '@shared/i18n/types'
 
-function LanguageBar({ name, level, percent }: (typeof languages)[number]) {
+function LanguageBar({ name, level, percent }: LanguageItemT) {
   const { ref, inView } = useInView<HTMLDivElement>()
 
   return (
@@ -25,17 +26,19 @@ function LanguageBar({ name, level, percent }: (typeof languages)[number]) {
 }
 
 export function Languages() {
+  const { t } = useLocale()
+
   return (
     <section id="languages" className="scroll-mt-24 py-14 sm:py-20">
       <Container>
-        <SectionTitle eyebrow="Языки" title="Языки общения" />
+        <SectionTitle eyebrow={t.languages.eyebrow} title={t.languages.title} />
         <div className="-mt-6 mb-10 flex items-center gap-2 text-sm text-[var(--fg-muted)]">
           <LanguagesIcon size={16} className="text-violet-500" />
-          Русский, английский для чтения документации и общения с командой, японский — в процессе изучения.
+          {t.languages.note}
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {languages.map((language, index) => (
+          {t.languages.items.map((language, index) => (
             <RevealOnScroll key={language.id} delay={index * 100}>
               <LanguageBar {...language} />
             </RevealOnScroll>

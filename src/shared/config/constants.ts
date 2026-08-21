@@ -1,15 +1,6 @@
-export interface NavSection {
-  id: string
-  label: string
-}
+export const NAV_SECTION_IDS = ['hero', 'stack', 'experience', 'skills', 'languages', 'contact'] as const
 
-export const NAV_SECTIONS: NavSection[] = [
-  { id: 'hero', label: 'Обо мне' },
-  { id: 'stack', label: 'Стек' },
-  { id: 'experience', label: 'Опыт' },
-  { id: 'skills', label: 'Навыки' },
-  { id: 'languages', label: 'Языки' },
-  { id: 'contact', label: 'Контакты' },
-]
+export type NavSectionId = (typeof NAV_SECTION_IDS)[number]
 
 export const THEME_STORAGE_KEY = 'resume-theme'
+export const LOCALE_STORAGE_KEY = 'resume-locale'

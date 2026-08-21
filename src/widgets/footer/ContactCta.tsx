@@ -1,12 +1,15 @@
 import { Mail, Send } from 'lucide-react'
 import { Container } from '@shared/ui/Container'
 import { RevealOnScroll } from '@shared/ui/RevealOnScroll'
+import { useLocale } from '@shared/i18n/useLocale'
 import { socialLinks } from '@entities/social-links/model/data'
 
 const telegramLink = socialLinks.find((link) => link.id === 'telegram')!
 const emailLink = socialLinks.find((link) => link.id === 'email')!
 
 export function ContactCta() {
+  const { t } = useLocale()
+
   return (
     <section id="contact" className="scroll-mt-24 py-14 sm:py-20">
       <Container>
@@ -24,11 +27,10 @@ export function ContactCta() {
 
             <div className="relative">
               <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
-                Готовы обсудить проект или вакансию?
+                {t.contact.title}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base text-violet-100 sm:text-lg">
-                Отвечаю быстро, открыт к удалённой работе и интересным задачам на Vue/Nuxt/React
-                и NestJS.
+                {t.contact.description}
               </p>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -39,7 +41,7 @@ export function ContactCta() {
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-violet-700 shadow-lg transition-transform duration-300 hover:scale-[1.03]"
                 >
                   <Send size={16} />
-                  Написать в Telegram
+                  {t.contact.ctaTelegram}
                 </a>
                 <a
                   href={emailLink.href}
