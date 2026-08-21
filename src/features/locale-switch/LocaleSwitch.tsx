@@ -3,10 +3,10 @@ import { Check, ChevronDown } from 'lucide-react'
 import { useLocale } from '@shared/i18n/useLocale'
 import type { Locale } from '@shared/i18n/types'
 
-const OPTIONS: { code: Locale; flag: string; label: string }[] = [
-  { code: 'ru', flag: '🇷🇺', label: 'Русский' },
-  { code: 'en', flag: '🇬🇧', label: 'English' },
-  { code: 'ja', flag: '🇯🇵', label: '日本語' },
+const OPTIONS: { code: Locale; label: string }[] = [
+  { code: 'ru', label: 'Русский' },
+  { code: 'en', label: 'English' },
+  { code: 'ja', label: '日本語' },
 ]
 
 export function LocaleSwitch() {
@@ -46,8 +46,8 @@ export function LocaleSwitch() {
         aria-label={t.a11y.localeSwitch}
         className="inline-flex h-10 items-center gap-1 rounded-full border border-violet-500/20 bg-white/60 px-3 text-sm font-medium text-zinc-600 transition-all duration-300 hover:border-violet-500/60 hover:text-violet-600 dark:border-violet-400/15 dark:bg-white/5 dark:text-zinc-300 dark:hover:text-violet-300"
       >
-        <span aria-hidden="true" className="text-base leading-none">
-          {current.flag}
+        <span aria-hidden="true" className="text-xs font-semibold tracking-wide">
+          {current.code.toUpperCase()}
         </span>
         <ChevronDown
           size={13}
@@ -73,7 +73,9 @@ export function LocaleSwitch() {
               }}
               className="flex w-full cursor-pointer items-center gap-2.5 px-3.5 py-2 text-sm text-[var(--fg)] transition-colors hover:bg-violet-500/10"
             >
-              <span aria-hidden="true">{option.flag}</span>
+              <span aria-hidden="true" className="w-6 text-xs font-semibold text-violet-500">
+                {option.code.toUpperCase()}
+              </span>
               <span className="flex-1 text-left">{option.label}</span>
               {option.code === locale && <Check size={14} className="shrink-0 text-violet-500" />}
             </button>
