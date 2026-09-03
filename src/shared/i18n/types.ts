@@ -36,13 +36,6 @@ export interface LanguageItemT {
   percent: number
 }
 
-export interface CertificateT {
-  id: string
-  title: string
-  issuer: string
-  year: string
-}
-
 export interface Dictionary {
   meta: {
     title: string
@@ -100,7 +93,6 @@ export interface Dictionary {
     description: string
     groups: SkillGroupT[]
     educationTitle: string
-    certificatesTitle: string
   }
   education: {
     institution: string
@@ -108,7 +100,6 @@ export interface Dictionary {
     speciality: string
     period: string
   }
-  certificates: CertificateT[]
   languages: {
     eyebrow: string
     title: string

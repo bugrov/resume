@@ -9,8 +9,8 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'telegram',
     label: 'Telegram',
-    href: 'https://t.me/average_pudge_enjoyer',
-    handle: '@average_pudge_enjoyer',
+    href: 'https://t.me/bugrov_alexander',
+    handle: '@bugrov_alexander',
   },
   {
     id: 'github',

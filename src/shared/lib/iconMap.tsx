@@ -6,6 +6,7 @@ import {
   History,
   Infinity as InfinityIcon,
   Layout,
+  Package,
   Plug,
   Server,
   ServerCog,
@@ -25,6 +26,7 @@ export const ICON_MAP: Record<string, LucideIcon> = {
   infinity: InfinityIcon,
   'chevrons-right': ChevronsRight,
   history: History,
+  package: Package,
 }
 
 export function getIcon(id: string): LucideIcon {
