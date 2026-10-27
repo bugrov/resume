@@ -1,11 +1,8 @@
 import type { Dictionary } from '../types'
+import { SEO_META } from '../meta'
 
 export const ru: Dictionary = {
-  meta: {
-    title: 'Александр Бугров — Fullstack-разработчик',
-    description:
-      'Александр Бугров — Fullstack-разработчик. Vue.js, Nuxt.js, React, Next.js, Node.js, NestJS, PHP. 6+ лет коммерческой разработки, опыт архитектуры и поддержки крупных проектов.',
-  },
+  meta: SEO_META.ru,
   nav: {
     hero: 'Обо мне',
     stack: 'Стек',

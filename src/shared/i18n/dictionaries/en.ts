@@ -1,11 +1,8 @@
 import type { Dictionary } from '../types'
+import { SEO_META } from '../meta'
 
 export const en: Dictionary = {
-  meta: {
-    title: 'Alexander Bugrov — Fullstack Developer',
-    description:
-      'Alexander Bugrov — Fullstack Developer. Vue.js, Nuxt.js, React, Next.js, Node.js, NestJS, PHP. 6+ years of commercial development, experience in architecture and maintaining large projects.',
-  },
+  meta: SEO_META.en,
   nav: {
     hero: 'About',
     stack: 'Stack',

@@ -54,6 +54,29 @@ aria-label), и весь контент резюме (профиль, стек, 
 не хардкодят строки в JSX (кроме `социальных ссылок href/handle`, которые не
 переводятся, см. `src/entities/social-links/model/data.ts`).
 
+### Язык в URL (`/`, `/en`, `/ja`)
+
+Каждый язык имеет свой адрес: русский — `/`, английский — `/en`, японский — `/ja`
+(`/jp` и `?lang=` тоже понимаются и нормализуются в `/ja`/`/en`). Это нужно, чтобы
+отправлять рекрутеру ссылку сразу на его языке. Логика — `src/shared/i18n/routing.ts`
+и `LocaleContext.tsx`, роутера нет: используем `history.pushState`/`popstate`.
+
+- Приоритет определения языка: путь → `?lang=` → сохранённый выбор (`resume-locale`)
+  → язык браузера (`ru`/`ja`/`en`, остальное → `en`). В `localStorage` язык пишется
+  **только** при явном клике в `LocaleSwitch`, не при автоопределении.
+- `/` — это русский. Если на `/` пришёл человек без сохранённого выбора и с не-русским
+  браузером, адрес через `replaceState` меняется на `/en` или `/ja`.
+- `<title>`, `description`, `og:*`, `hreflang`, `canonical` для превью-ботов (они не
+  исполняют JS) генерирует плагин `vite-plugins/localePages.ts` после сборки: из
+  `dist/index.html` делает `dist/index.html` (ru), `dist/en/index.html`,
+  `dist/ja/index.html`. Тексты метатегов — в `src/shared/i18n/meta.ts` (файл без
+  импортов, его читают и словари, и плагин). Если меняешь `<head>` в `index.html`,
+  держи теги `description`/`og:title`/`og:description`/`og:image` и маркер
+  `<!--locale-seo-->` — плагин падает при сборке, если их не находит.
+- Домен для абсолютных ссылок берётся из env `SITE_URL`, по умолчанию
+  `https://resume-bice-iota.vercel.app`. `vercel.json` содержит rewrites на
+  `/en`, `/ja` и редиректы `/jp → /ja`, `/ru → /`.
+
 Технические идентификаторы (`id` у stack-item/advantage/experience/skill-group/
 language/certificate, значения `icon`) должны быть **одинаковыми** во всех трёх
 словарях — по ним идут React-ключи и маппинг на иконки (`shared/lib/iconMap.tsx`).

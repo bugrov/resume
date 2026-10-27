@@ -1,11 +1,8 @@
 import type { Dictionary } from '../types'
+import { SEO_META } from '../meta'
 
 export const ja: Dictionary = {
-  meta: {
-    title: 'アレクサンドル・ブグロフ — フルスタックエンジニア',
-    description:
-      'アレクサンドル・ブグロフ、フルスタックエンジニア。Vue.js、Nuxt.js、React、Next.js、Node.js、NestJS、PHPを使用。実務経験6年以上、大規模プロジェクトの設計・保守経験あり。',
-  },
+  meta: SEO_META.ja,
   nav: {
     hero: 'プロフィール',
     stack: 'スタック',

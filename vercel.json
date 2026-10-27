@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/jp", "destination": "/ja", "permanent": true },
+    { "source": "/ru", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/en", "destination": "/en/index.html" },
+    { "source": "/ja", "destination": "/ja/index.html" }
+  ]
+}
