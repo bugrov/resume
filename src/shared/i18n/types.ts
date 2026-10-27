@@ -20,6 +20,7 @@ export interface ExperienceItemT {
   role: string
   period: string
   duration: string
+  summary: string
   points: string[]
 }
 
@@ -27,6 +28,7 @@ export interface SkillGroupT {
   id: string
   title: string
   skills: string[]
+  note?: string
 }
 
 export interface LanguageItemT {

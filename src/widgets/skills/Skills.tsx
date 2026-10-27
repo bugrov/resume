@@ -27,6 +27,9 @@ export function Skills() {
                     <Chip key={skill}>{skill}</Chip>
                   ))}
                 </div>
+                {group.note && (
+                  <p className="mt-4 text-xs leading-relaxed text-[var(--fg-muted)] sm:text-sm">{group.note}</p>
+                )}
               </div>
             </RevealOnScroll>
           ))}

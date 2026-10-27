@@ -45,7 +45,9 @@ export function Experience() {
                   </div>
                 </div>
 
-                <ul className="mt-5 flex flex-col gap-2.5">
+                <p className="mt-4 text-sm leading-relaxed text-[var(--fg)] sm:text-[15px]">{job.summary}</p>
+
+                <ul className="mt-4 flex flex-col gap-2.5">
                   {job.points.map((point) => (
                     <li
                       key={point}
