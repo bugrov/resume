@@ -146,6 +146,7 @@ export const ja: Dictionary = {
       {
         id: 'express-office',
         company: 'Express Ofis LLC',
+        url: 'https://www.express-office.ru/',
         role: 'フルスタックエンジニア',
         period: '2023年12月 — 2026年6月',
         duration: '2年7ヶ月',
@@ -169,6 +170,7 @@ export const ja: Dictionary = {
       {
         id: 'intensa',
         company: 'Intensa Studio',
+        url: 'https://intensa.ru/',
         role: 'Webエンジニア',
         period: '2020年1月 — 2023年11月',
         duration: '3年11ヶ月',

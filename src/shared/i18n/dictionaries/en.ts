@@ -146,6 +146,7 @@ export const en: Dictionary = {
       {
         id: 'express-office',
         company: 'Express Ofis LLC',
+        url: 'https://www.express-office.ru/',
         role: 'Fullstack Developer',
         period: 'December 2023 — June 2026',
         duration: '2 years 7 months',
@@ -169,6 +170,7 @@ export const en: Dictionary = {
       {
         id: 'intensa',
         company: 'Intensa Studio',
+        url: 'https://intensa.ru/',
         role: 'Web Developer',
         period: 'January 2020 — November 2023',
         duration: '3 years 11 months',

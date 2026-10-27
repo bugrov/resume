@@ -1,4 +1,4 @@
-import { Briefcase, Calendar } from 'lucide-react'
+import { Briefcase, Calendar, ExternalLink } from 'lucide-react'
 import { Container } from '@shared/ui/Container'
 import { SectionTitle } from '@shared/ui/SectionTitle'
 import { RevealOnScroll } from '@shared/ui/RevealOnScroll'
@@ -36,7 +36,15 @@ export function Experience() {
                   <div>
                     <h3 className="font-display text-xl font-semibold text-[var(--fg)]">{job.role}</h3>
                     <p className="mt-1 text-sm font-medium text-violet-600 dark:text-violet-300">
-                      {job.company}
+                      <a
+                        href={job.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex cursor-pointer items-center gap-1 underline-offset-4 transition-colors hover:underline"
+                      >
+                        {job.company}
+                        <ExternalLink size={13} aria-hidden="true" />
+                      </a>
                     </p>
                   </div>
                   <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/10 px-3 py-1.5 text-xs font-medium text-[var(--fg-muted)]">

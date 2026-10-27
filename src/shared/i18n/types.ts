@@ -17,6 +17,7 @@ export interface AdvantageItemT {
 export interface ExperienceItemT {
   id: string
   company: string
+  url: string
   role: string
   period: string
   duration: string
