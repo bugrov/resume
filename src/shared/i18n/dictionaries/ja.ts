@@ -52,13 +52,13 @@ export const ja: Dictionary = {
       {
         id: 'backend',
         title: 'Backend',
-        description: 'Node.jsとNestJSを主なサーバーサイド技術としています。',
+        description: 'PHPとNestJSでAPIとサーバーサイドのロジックを設計しています:認証、ロール、トランザクション、決済の冪等性。',
         icon: 'server',
       },
       {
         id: 'php',
         title: 'PHP & 1C-Bitrix',
-        description: '実務での豊富な経験:PHP 7/8、Laravel、1C-Bitrix(D7、ORM)。',
+        description: '実務での豊富な経験:PHP 7/8、1C-Bitrix(D7、ORM)、PrestaShop、Laravel。',
         icon: 'code',
       },
       {
@@ -82,7 +82,8 @@ export const ja: Dictionary = {
       {
         id: 'api',
         title: 'API・連携',
-        description: 'REST API、GraphQL、Webhook、決済システム、SDKパッケージ、mindbox.ru。',
+        description:
+          'REST API。決済(YooMoney、「Dolyami」、分割決済)、配送(CDEK)、マーケットプレイス(Wildberries、Avito)、ロイヤリティ(Mindbox)、1Cおよび外部CRMとのデータ連携、Telegramボット。',
         icon: 'plug',
       },
       {
@@ -105,8 +106,15 @@ export const ja: Dictionary = {
       id: 'ts-lean',
       title: 'TypeScript中心の技術選定',
       description:
-        '優先するのはVue/Nuxt、React/Next、NestJSといったモダンなTypeScriptスタックです。もちろん、プロジェクトの要件に応じてPHPバックエンドにも対応可能です。',
+        '優先するのはVue/Nuxt、React/Next、NestJSといったモダンなTypeScriptスタックです。',
       icon: 'chevrons-right',
+    },
+    {
+      id: 'php-expert',
+      title: 'PHPのエコシステムを熟知',
+      description:
+        '2020年からPHPで開発しており、1C-Bitrix(D7、ORM)、PrestaShop、Laravelといったエコシステムを内側から熟知しています。20万点以上のカタログのフィルタを書き直し(4秒→2秒)、30社以上のサプライヤー向けインポートシステムとAvito向けデータ出力を構築しました。',
+      icon: 'code',
     },
     {
       id: 'legacy',
@@ -220,25 +228,24 @@ export const ja: Dictionary = {
         title: 'Backend',
         skills: [
           'PHP 7/8',
-          'Laravel',
-          'PrestaShop',
           '1C-Bitrix (D7, ORM)',
+          'PrestaShop',
+          'Laravel',
           'CodeIgniter',
           'WordPress',
           'Node.js',
           'NestJS',
           'REST API',
+          'Prisma',
           'GraphQL',
           'Swagger',
           'MySQL / PostgreSQL',
           'SQL',
           'Redis',
-          'Prisma',
           'JWT',
           'Guzzle',
           'Mindbox',
           'Wildberries API',
-          '1C',
           'Unit testing',
         ],
       },

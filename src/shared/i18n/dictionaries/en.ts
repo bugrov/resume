@@ -52,13 +52,13 @@ export const en: Dictionary = {
       {
         id: 'backend',
         title: 'Backend',
-        description: 'Node.js and NestJS as my preferred server-side stack.',
+        description: 'I design APIs and server-side logic in PHP and NestJS: authentication, roles, transactions, payment idempotency.',
         icon: 'server',
       },
       {
         id: 'php',
         title: 'PHP & 1C-Bitrix',
-        description: 'Solid commercial experience: PHP 7/8, Laravel, 1C-Bitrix (D7, ORM).',
+        description: 'Solid commercial experience: PHP 7/8, 1C-Bitrix (D7, ORM), PrestaShop, Laravel.',
         icon: 'code',
       },
       {
@@ -82,7 +82,8 @@ export const en: Dictionary = {
       {
         id: 'api',
         title: 'APIs & integrations',
-        description: 'REST APIs, GraphQL, webhooks, payment systems, SDK packages, mindbox.ru.',
+        description:
+          'REST APIs. Payments (YooMoney, “Dolyami”, split payments), delivery (CDEK), marketplaces (Wildberries, Avito), loyalty (Mindbox), data exchange with 1C and external CRMs, Telegram bots.',
         icon: 'plug',
       },
       {
@@ -105,8 +106,15 @@ export const en: Dictionary = {
       id: 'ts-lean',
       title: 'TypeScript-leaning',
       description:
-        "My priority is the modern TS stack: Vue/Nuxt, React/Next and NestJS. That said, I'm not afraid of a PHP backend when a project calls for it.",
+        'My priority is the modern TS stack: Vue/Nuxt, React/Next and NestJS.',
       icon: 'chevrons-right',
+    },
+    {
+      id: 'php-expert',
+      title: 'PHP: I know the ecosystem inside out',
+      description:
+        'I have been writing PHP since 2020 and know its ecosystem inside out: 1C-Bitrix (D7, ORM), PrestaShop, Laravel. Rewrote the filter of a 200,000+ product catalog (from 4 to 2 seconds), built an import system for 30+ suppliers and Avito exports.',
+      icon: 'code',
     },
     {
       id: 'legacy',
@@ -220,25 +228,24 @@ export const en: Dictionary = {
         title: 'Backend',
         skills: [
           'PHP 7/8',
-          'Laravel',
-          'PrestaShop',
           '1C-Bitrix (D7, ORM)',
+          'PrestaShop',
+          'Laravel',
           'CodeIgniter',
           'WordPress',
           'Node.js',
           'NestJS',
           'REST API',
+          'Prisma',
           'GraphQL',
           'Swagger',
           'MySQL / PostgreSQL',
           'SQL',
           'Redis',
-          'Prisma',
           'JWT',
           'Guzzle',
           'Mindbox',
           'Wildberries API',
-          '1C',
           'Unit testing',
         ],
       },

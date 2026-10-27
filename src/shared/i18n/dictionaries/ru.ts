@@ -52,13 +52,13 @@ export const ru: Dictionary = {
       {
         id: 'backend',
         title: 'Backend',
-        description: 'Node.js и NestJS как приоритетный серверный стек.',
+        description: 'Проектирую API и серверную логику на PHP и NestJS: авторизация, роли, транзакции, идемпотентность платежей.',
         icon: 'server',
       },
       {
         id: 'php',
         title: 'PHP & 1С-Битрикс',
-        description: 'Уверенный коммерческий опыт: PHP 7/8, Laravel, 1C-Bitrix (D7, ORM).',
+        description: 'Уверенный коммерческий опыт: PHP 7/8, 1C-Bitrix (D7, ORM), PrestaShop, Laravel.',
         icon: 'code',
       },
       {
@@ -82,7 +82,8 @@ export const ru: Dictionary = {
       {
         id: 'api',
         title: 'API и интеграции',
-        description: 'REST API, GraphQL, вебхуки, платёжные системы, SDK-пакеты, mindbox.ru.',
+        description:
+          'REST API. Платежи (ЮMoney, «Долями», сплит-оплата), доставка (СДЭК), маркетплейсы (Wildberries, Авито), лояльность (Mindbox), обмен с 1С и внешними CRM, Telegram-боты.',
         icon: 'plug',
       },
       {
@@ -105,8 +106,15 @@ export const ru: Dictionary = {
       id: 'ts-lean',
       title: 'Уклон в TypeScript',
       description:
-        'Приоритет — современный TS-стек: Vue/Nuxt, React/Next и NestJS. При этом не боюсь PHP-бэкенда, если того требует проект.',
+        'Приоритет — современный TS-стек: Vue/Nuxt, React/Next и NestJS.',
       icon: 'chevrons-right',
+    },
+    {
+      id: 'php-expert',
+      title: 'PHP: экосистему знаю изнутри',
+      description:
+        'Пишу на PHP с 2020 года и знаю его экосистему изнутри: 1С-Битрикс (D7, ORM), PrestaShop, Laravel. Переписал фильтр каталога на 200 000+ товаров (с 4 до 2 секунд), собрал импорт 30+ поставщиков и выгрузки на Авито.',
+      icon: 'code',
     },
     {
       id: 'legacy',
@@ -220,25 +228,24 @@ export const ru: Dictionary = {
         title: 'Backend',
         skills: [
           'PHP 7/8',
-          'Laravel',
-          'PrestaShop',
           '1C-Bitrix (D7, ORM)',
+          'PrestaShop',
+          'Laravel',
           'CodeIgniter',
           'WordPress',
           'Node.js',
           'NestJS',
           'REST API',
+          'Prisma',
           'GraphQL',
           'Swagger',
           'MySQL / PostgreSQL',
           'SQL',
           'Redis',
-          'Prisma',
           'JWT',
           'Guzzle',
           'Mindbox',
           'Wildberries API',
-          '1С',
           'Unit testing',
         ],
       },
